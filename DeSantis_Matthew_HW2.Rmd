@@ -1,0 +1,82 @@
+---
+title: "Stats for DS HW 2"
+author: "Matthew DeSantis"
+date: '2022-09-15'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+"1.6.16"
+
+a: units are thousands of dollars for mean and thousands of dollars squared for variance. Values as shown below.
+```{r}
+salaries = c(152,169,178,179,185,188,195,196,198,203,204,209,210,212,214)
+meansal = mean(salaries)
+varsal = var(salaries)
+meansal
+varsal
+```
+b (i):
+```{r}
+newvar = varsal
+newmean = meansal + 5
+newmean
+newvar
+```
+b (ii):
+```{r}
+newvar2 = (1.05**2)*varsal
+newmean2 = 1.05*meansal
+#doing it another way to verify
+salaries2 = 1.05*salaries
+
+newmean2
+mean(salaries2)
+newvar2
+var(salaries2)
+```
+\newpage
+"1.7.4"
+
+a:
+```{r tidy = FALSE}
+si=read.table(
+url(
+"https://media.pearsoncmg.com/cmg/pmmg_mml_shared/mathstatsresources/Akritas/SolarIntensAuData.txt"),
+header=T)
+boxplot(si)
+```
+b:
+```{r}
+quantile(si$SI, .3)
+quantile(si$SI, .6)
+quantile(si$SI, .9)
+```
+\newpage
+"2.2.10"
+
+a: E1 has 21, E2 has 14, E3 has 30
+
+c: (1)E1 and E2: The disk has low shock absorption and low hardness
+   (2)E1 or E2: The disk has low shock absorption or low hardness or both
+   (3)E1 - E2: The disk has low hardness and high shock absorption
+   (4)(E1 - E2) or (E2 - E1): The disk has low hardness and high shock absorption or the disk has high hardness and low                              shock absorption
+   
+d: (1) has 5, (2) has 30, (3) has 16, (4) has 25
+\newpage
+"2.3.9"
+
+a:
+```{r}
+choose(12, 4)
+```
+
+b:
+```{r}
+(choose(5,2)*4*3)
+```
+
+c: 120/495

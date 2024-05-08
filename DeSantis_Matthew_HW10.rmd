@@ -1,0 +1,64 @@
+---
+title: "Stats for DS HW 10"
+author: "Matthew DeSantis"
+date: "2022-11-16"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 7.3.10
+
+## (a)
+```{r}
+phat = 985/1516
+n = 1516
+SE = sqrt(phat*(1-phat)/n)
+alpha = qnorm(0.975)
+upper = phat + SE*alpha
+lower = phat - SE*alpha
+upper
+lower
+```
+
+## (b)
+False. The true proportion value and the interval obtained in part a are both non-random constants, so it doesn't make sense to talk about probability with regards to them.
+
+\newpage
+
+# 7.4.4
+
+## (a)
+```{r}
+phatpr = 75/193
+alpha = qnorm(0.975)
+n = (4*(alpha^2)*phatpr*(1-phatpr))/(0.06^2)
+ceiling(n)
+```
+
+## (b)
+```{r}
+phatpr = 0.5
+alpha = qnorm(0.975)
+n = (4*(alpha^2)*phatpr*(1-phatpr))/(0.06^2)
+ceiling(n)
+```
+
+\newpage
+
+# Additional Problem 1
+
+![Work and answers for 1](1.jpg)
+
+```{r}
+s = sqrt(9/100)
+pnorm(3.1,3,s) - pnorm(2.9,3,s)
+```
+
+\newpage
+
+# Additional Problem 2
+
+![Work and answers for 2](2.jpg)

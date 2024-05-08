@@ -1,0 +1,110 @@
+---
+title: "Stats for DS HW 5"
+author: "Matthew DeSantis"
+date: "2022-10-05"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 3.4.8
+
+## (a)
+
+negative binomial
+
+## (b)
+
+sample space = {5,6,7,...}
+
+PMF = f(x) = choose(x-1, 4)(0.05^5)(0.95^(x-5))
+
+## (c)
+```{r}
+1 - pnbinom(35, 5, 0.05)
+```
+
+\newpage
+
+# 3.4.19
+
+## (a)
+
+Var(X1) = 2.6, Var(X2) = 3.8
+
+## (b)
+```{r}
+0.6*(dpois(0, 2.6))+0.4*(dpois(0,3.8))
+```
+## (c)
+
+P(by X2 | no errors) = P(by X2 and no errors)/P(no errors) = 
+```{r}
+0.4*dpois(0,3.8)/(0.6*(dpois(0, 2.6))+0.4*(dpois(0,3.8)))
+```
+
+\newpage
+
+# 3.5.1 
+
+## (a)
+```{r}
+1 - pexp(4, 1/6)
+```
+## (b)
+variance = 1/36
+```{r}
+qexp(0.95, 1/6)
+```
+## (c)
+
+### (i)
+```{r}
+1 - pexp(5, 1/6)
+```
+### (ii)
+6 years, because the exponential distribution is memoryless.
+
+\newpage
+
+# 3.5.8
+
+## (a)
+```{r}
+1 - pnorm(600, 500, 80)
+```
+## (b)
+```{r}
+qnorm(0.99, 500, 80)
+```
+
+\newpage
+
+# 4.2.3
+
+## (a)
+```{r}
+0.15+0.135+0.12+0.3
+0.12+0.135
+```
+## (b)
+f(x) = 0.42 for x=8, 0.31 for x=10, 0.27 for x=12, 0 otherwise
+f(y) = 0.48 for y=1.5, 0.405 for y=2, 0.115 for y=2.5
+
+## (c)
+```{r}
+(.135+.12)/(.135+.12+.15)
+```
+
+\newpage
+
+# 4.2.8
+
+## (a)
+Solving the double integral with bounds 0 to 1.5 and x to 3-x (2e^(-x-y)) dydx results in 1-4e^-3 or about 0.80
+
+## (b)
+marginal pdf of y is f(y) = (-2e^(-y))*((-2e^(-y))-1) for y>=0.
+marginal pdf of x is f(x) = 2e^(-2x) for x>=0

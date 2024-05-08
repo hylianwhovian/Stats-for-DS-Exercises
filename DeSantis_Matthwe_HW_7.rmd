@@ -1,0 +1,98 @@
+---
+title: "Stats For DS HW 7"
+author: "Matthew DeSantis"
+date: "2022-10-26"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 4.4.2
+
+## (a)
+The CDF, for 0<t<1, is: \newline
+P(max(X,Y)<T) = P(X<T and Y<T) = P(X<T)P(Y<T) = t^2.\newline
+Differentiate to get 2t as the PDF.
+
+\newpage
+
+# 4.5.4
+```{r}
+treeage = read.table(url("https://media.pearsoncmg.com/cmg/pmmg_mml_shared/mathstatsresources/Akritas/TreeAgeDiamSugarMaple.txt"), header = TRUE)
+diameter = treeage$Diamet
+age = treeage$Age
+```
+## (a)
+Without doing any data analysis, I would expect a positive correlation. We expect trees to get bigger as they grow.
+```{r}
+plot(diameter,age)
+```
+
+## (b)
+```{r}
+cov(diameter,age)
+cor(diameter,age)
+```
+The correlation is very strong positive, which aligns with the graph. It appears that the actual relationship may not be linear, although the linear relationship does seem to fit the data pretty well.
+
+\newpage
+
+# 4.5.8
+Cov(X,Y) = E(XY) - E(X)E(Y). XY = X^3, so E(XY) = integral from -1 to 1 of (x^3)/2 = (x^4)/8 from -1 to 1 = 0. E(X) = 0. E(Y) = E(X^2) = integral from -1 to 1 of (x^2)/2 = (x^3)/6 from -1 to 1 = 2/6. Therefore Cov(X,Y) = 0-0*2/6 = 0. Since the Cor is just Cov divided by the product of the variances, we already know that it must be 0, as 0 divided by anything is 0.
+
+\newpage
+
+# 4.6.8
+
+## (a)
+```{r}
+dbinom(1,16,0.02)
+```
+
+## (b)
+```{r}
+(factorial(16)/(factorial(10)*factorial(4)*factorial(2)))*((0.6^10)*(0.3^4)*(0.08^2))
+```
+
+## (C)
+```{r}
+dmultinom(c(10,4,2,0), prob = c(0.6,0.3,0.08,0.02))
+```
+
+\newpage
+
+# 5.3.4
+
+## (a)
+Because they are independent normal variables, and they use them one at a time, T=X1+X2+X3 represents the total time they will last. T~N(21, 3)
+```{r}
+qnorm(0.95, 21, 3)
+```
+
+## (b)
+```{r}
+pnorm(25,21,3)
+```
+
+## (c)
+```{r}
+dbinom(3,5,(1-pnorm(25,21,3)))
+```
+
+\newpage
+
+# Additional Problem
+
+## (a)
+Marginal dist of Y is N(110, 100).
+```{r}
+pnorm(124,110,10)-pnorm(106,110,10)
+```
+## (b)
+Conditional dist of Y given X = 3.2 is N(110+(0.6\*(10/0.4))\*(3.2-2.8), (1-0.36)*100) = N(116, 64)
+```{r}
+pnorm(124,116,64)-pnorm(106,116,64)
+
+```

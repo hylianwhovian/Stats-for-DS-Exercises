@@ -1,0 +1,104 @@
+---
+title: "DeSantis_Matthew_HW_4"
+author: "Matthew DeSantis"
+date: "2022-09-28"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 3.3.3
+
+## (a)
+```{r}
+tv = data.frame(Amount = c(0,400,750,800,1150,1500),
+                Probability = c(0.49,0.168,0.252,0.0144,0.0432,0.0324))
+```
+## (b)
+```{r}
+Amount= c(0,400,750,800,1150,1500)
+Probability = c(0.49,0.168,0.252,0.0144,0.0432,0.0324)
+expectedamt = sum(Amount*Probability)
+varamt = sum((Amount**2)*Probability) - expectedamt**2
+expectedamt
+varamt
+```
+\newpage
+
+# 3.3.7
+
+## (a)
+median = sqrt(2), IQR = Q3 - Q1 = sqrt(3) -1
+
+## (b)
+```{r}
+PDF = function(x){
+  return (x/2)
+}
+PDF.X = function(x){
+  return ((x**2)/2)
+}
+PDF.X2 = function(x){
+  return ((x**3)/2)
+}
+## true for x between 0 and 2
+expectedtime = integrate(PDF.X,0,2)
+vartime = integrate(PDF.X2,0,2)$value - (expectedtime$value)**2
+expectedtime$value
+vartime
+```
+\newpage
+
+# 3.4.4
+
+## (a)
+expected value = 5
+
+variance = 2.5
+
+## (b)
+```{r}
+dbinom(5,10,0.5)
+```
+## (c)
+```{r}
+pbinom(5,10,0.5)
+```
+## (d)
+Y represents the number of questions answered incorrectly
+
+## (e)
+```{r}
+pbinom(8,10,0.5)-pbinom(4,10,0.5)
+```
+
+\newpage
+
+# 3.4.13
+
+## (b)
+Sample space = {0,1,2,3}
+PMF = dhyper(x, 3, 17, 5) or ((choose(3,x)*choose(17,20-x))/choose(20,5))
+
+## (c)
+```{r}
+dhyper(1, 3, 17, 5)
+```
+
+## (d)
+```{r}
+expectedfault = (5*3/20)
+varfault = expectedfault*(1-3/20)*(15/19)
+expectedfault
+varfault
+```
+
+\newpage
+
+# Additional Problem
+
+MGF of X~U(0,1) = E(exp(tx)) = integral from 0 to 1 of exp(tx) = 
+exp(tx)/t evaluated from 0 to 1 = exp(t)/t - 1/t = (exp(t)-1)/t when t!=0. When t = 0, then
+MGF = E(exp(x*0)) = E(exp(0)) = 1

@@ -1,0 +1,73 @@
+---
+title: "Stats for DS HW 9"
+author: "Matthew DeSantis"
+date: "2022-11-09"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 6.2.6
+
+## (a)
+E(phat1 - phat2) = E(phat1) - E(phat2) = (from law of large numbers) p1-p2
+
+## (b)
+se = sqrt(var(phat1)+var(phat2)) = sqrt((p1(1-p1)/m)+(p2(1-p2)/n))
+
+For the estimated se, just replace p1 and p2 with phat1 and phat2 respecitvely.
+
+## (c)
+```{r}
+X = 70
+Y = 160
+m = 100
+n = 200
+phat1 = X/m
+phat2 = Y/n
+phat1 - phat2
+sehat = sqrt((phat1*(1-phat1)/m)+(phat2*(1-phat2)/n))
+sehat
+```
+
+
+\newpage
+
+# 6.3.4
+
+## (a)
+MoM estimator for theta would be xbar/(sqrt(pi/2)) or xbar\*(sqrt(2/pi)). It is unbiased, because E(thetahat) = E(xbar\*sqrt(2/pi)) = sqrt(2/pi) \* E(xbar) = sqrt(2/pi) \* sqrt(pi/2) \* theta = theta
+
+\newpage
+
+# 6.3.6
+
+## (a)
+![Solution for part a](6-3-6b.jpg)
+
+## (b)
+```{r}
+x = 12+(2*11)+(3*14)+(4*9)
+x/(4+12+11+14+9)
+```
+## (c) 
+Model-based population variance is xbar (poisson model has the same mean and variance), which is 2.24. The sample variance is 
+```{r}
+var(c(0,0,0,0,1,1,1,1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4))
+```
+If we are assuming that Poisson accurately describes the population, we should prefer the model-based estimate. 
+
+\newpage
+
+# 6.3.7
+
+## (a)
+![Solution for part a](6-3-7.jpg)
+
+## (c)
+```{r}
+5/(47+5)
+```
+

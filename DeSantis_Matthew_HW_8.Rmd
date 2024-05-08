@@ -1,0 +1,59 @@
+---
+title: "Stats for DS HW 8"
+author: "Matthew DeSantis"
+date: "2022-11-02"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 5.4.5
+
+X is the height of randomly selected segment. X has mean 36 and variance 1/12. Because the number is large (>=30), we can say (by the central limit theorem) that the mean height of a tower (the sum of 30 segments) is approximately normally distributed ~N(30\*36, 30\*1/12). The difference of the two towers' heights would then be approximately N~(0, 5). The chance that this is less than 4 and greater than -4 would be as given in the R code. Because this is based on the CLT, this is an approximation. 
+
+```{r}
+pnorm(4,0,sqrt(5))-pnorm(-4,0,sqrt(5))
+```
+\newpage
+
+# Additional Problem 1
+
+Y = ln(X) -> X = exp(Y) for exp(Y) > 0 (which is everywhere) \newline
+fy(y) = exp(y-exp(y)) for negative infinity < y < positive infinity
+
+\newpage
+
+# Additional Problem 2
+
+Inverses: X1=Y1/Y2, X2=Y2 \newline
+Jacobian: (1/Y2)(1) + (-Y1/Y2^2)(0) = 1/Y1 \newline
+Bounds: 0<Y1<Y2<1 \newline
+fY1,Y2(y1,y2) = (Y1/Y2^2)+1 for 0<Y1<Y2<1
+
+\newpage
+
+# Additional Problem 3
+
+## (a)
+```{r}
+set.seed(488103)
+n = 100000
+X1 = runif(n)
+X2 = runif(n)
+Y = c()
+for(x in 1:n){
+  Y = append(Y, max(X1[x], X2[x]))
+}
+CDF = function(x){
+  length(Y[Y<=x])/n
+}
+CDF(0.5)
+CDF(0.75)
+```
+
+## (b)
+```{r}
+hist(Y)
+```
